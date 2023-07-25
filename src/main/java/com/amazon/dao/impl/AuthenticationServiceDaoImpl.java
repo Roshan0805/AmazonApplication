@@ -4,10 +4,7 @@ import com.amazon.dao.AuthenticationServiceDao;
 import com.amazon.exception.DBException;
 import com.amazon.model.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * <p>
@@ -54,7 +51,6 @@ public class AuthenticationServiceDaoImpl implements AuthenticationServiceDao {
             statement.setString(4, user.getAddress());
             statement.setString(5, user.getPhoneNumber());
             statement.execute();
-            dbConnection.release(connection);
 
             return true;
         } catch (SQLException | InterruptedException exception) {
